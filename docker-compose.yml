@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # Microserviços da Monitoração de Vídeo
+  # ==========================================
+  app-backend:
+    build:
+      context: ./Backend/app-backend-monitoracao-video
+      dockerfile: Dockerfile
+    container_name: nvr-backend-api
+    ports:
+      - "5000:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=NvrVisionAiDb;User Id=sa;Password=Dev@123456;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - KafkaSettings__BootstrapServers=kafka:29092
+    networks:
+      - shopping-network
+
+  app-worker:
+    build:
+      context: ./Backend/app-worker-captura-video
+      dockerfile: Dockerfile
+    container_name: nvr-worker-captura
+    depends_on:
+      - app-backend
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=NvrVisionAiDb;User Id=sa;Password=Dev@123456;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - ApiBackend__BaseUrl=http://app-backend
+      - KafkaSettings__BootstrapServers=kafka:29092
+    networks:
+      - shopping-network
+
+  app-frontend:
+    build:
+      context: ./Frontend/web/app-modulo-monitoracao
+      dockerfile: Dockerfile
+    container_name: nvr-frontend-angular
+    depends_on:
+      - app-backend
+    ports:
+      - "4205:80"
+    networks:
+      - shopping-network
+
+networks:
+  shopping-network:
+    external: true

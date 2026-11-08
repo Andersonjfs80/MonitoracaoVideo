@@ -1,0 +1,34 @@
+<div class="crud-container">
+  <div class="glass-panel form-panel">
+    <h2>Cadastrar Nova Câmera</h2>
+    <div class="form-group">
+      <input type="text" placeholder="Nome (Ex: Pátio Principal)" [(ngModel)]="novaCameraNome">
+      <input type="text" placeholder="URL RTSP (Ex: rtsp://192.168.0.10:554/stream)" [(ngModel)]="novaCameraUrl">
+      <button class="btn-primary" (click)="adicionar()">Salvar Câmera</button>
+    </div>
+  </div>
+
+  <div class="glass-panel list-panel">
+    <h2>Câmeras Configuradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>URL RTSP</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cam of cameras">
+          <td>{{ cam.nome }}</td>
+          <td><code>{{ cam.urlRtsp }}</code></td>
+          <td><span class="badge" [ngClass]="cam.ativa ? 'on' : 'off'">{{ cam.ativa ? 'Ativa' : 'Inativa' }}</span></td>
+          <td>
+            <button class="btn-danger" (click)="remover(cam.id!)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

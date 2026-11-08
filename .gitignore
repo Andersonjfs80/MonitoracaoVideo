@@ -1,0 +1,46 @@
+# .gitignore para Monorepo .NET + Angular/Ionic
+
+# .NET / Visual Studio
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+artifacts/
+publish/
+TestResult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.nupkg
+*.snupkg
+
+# Node / Angular / Ionic
+node_modules/
+pnpm-store/
+.pnpm-store/
+dist/
+.angular/
+.ionic/
+www/
+tmp/
+.vscode/
+
+# Environment
+.env
+.env.*
+
+# Logs
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# Docker
+.docker/

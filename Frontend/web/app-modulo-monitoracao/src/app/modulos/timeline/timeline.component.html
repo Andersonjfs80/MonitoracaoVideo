@@ -1,0 +1,25 @@
+<div class="timeline-container">
+  <div class="glass-panel header-panel">
+    <h2>Histórico de Gravações</h2>
+    <p>Visualize os recortes de vídeo (.mp4) salvos pelo NVR.</p>
+  </div>
+
+  <div class="timeline-list">
+    <div *ngFor="let g of gravacoes" class="glass-panel timeline-item">
+      <div class="time-block">
+        <strong>Início:</strong> {{ g.inicio | date:'dd/MM/yyyy HH:mm:ss' }}
+        <br>
+        <strong>Fim:</strong> {{ g.fim | date:'dd/MM/yyyy HH:mm:ss' }}
+      </div>
+      <div class="video-info">
+        <span>Câmera ID: {{ g.cameraId }}</span>
+        <code>{{ g.caminhoArquivo }}</code>
+      </div>
+      <button class="btn-play">Assistir Replay</button>
+    </div>
+    
+    <div *ngIf="gravacoes.length === 0" class="empty-state">
+      <p>Nenhuma gravação encontrada no banco de dados.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="app-layout">
+  <aside class="sidebar glass-panel">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <h2>Vision AI</h2>
+    </div>
+    
+    <nav class="nav-menu">
+      <a routerLink="/mosaico" routerLinkActive="active" class="nav-item">
+        <span class="icon">⊞</span> Mosaico HLS
+      </a>
+      <a routerLink="/cameras" routerLinkActive="active" class="nav-item">
+        <span class="icon">📷</span> Gestão de Câmeras
+      </a>
+      <a routerLink="/timeline" routerLinkActive="active" class="nav-item">
+        <span class="icon">⏱</span> Linha do Tempo
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

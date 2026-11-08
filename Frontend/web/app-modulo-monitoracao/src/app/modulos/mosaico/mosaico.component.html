@@ -1,0 +1,28 @@
+<div class="mosaico-container">
+  <header class="mosaico-header glass-panel">
+    <h1>Câmeras ao Vivo</h1>
+    <div class="status-bar">
+      <span class="badge online">{{ cameras.length }} Online</span>
+      <span class="badge ai-active">IA Ativa</span>
+    </div>
+  </header>
+
+  <div class="video-grid">
+    <div *ngFor="let camera of cameras" class="video-card glass-panel">
+      <div class="video-header">
+        <span class="camera-name">{{ camera.nome }}</span>
+        <span class="camera-status" [ngClass]="camera.status === 'Ao Vivo' ? 'live' : 'offline'">
+          <span class="dot"></span> {{ camera.status }}
+        </span>
+      </div>
+      <div class="video-wrapper">
+        <video #videoElement muted autoplay playsinline></video>
+        <!-- Simulando marcadores da IA -->
+        <div class="ai-overlay" *ngIf="camera.status === 'Ao Vivo'">
+          <div class="box-pessoa"></div>
+          <span class="label-pessoa">Pessoa 98%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

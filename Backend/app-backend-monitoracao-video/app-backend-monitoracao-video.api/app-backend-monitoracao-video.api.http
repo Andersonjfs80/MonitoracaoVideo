@@ -1,0 +1,6 @@
+@app_backend_monitoracao_video.api_HostAddress = http://localhost:5064
+
+GET {{app_backend_monitoracao_video.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

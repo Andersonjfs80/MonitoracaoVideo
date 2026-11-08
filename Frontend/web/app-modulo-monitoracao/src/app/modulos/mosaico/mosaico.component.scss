@@ -1,0 +1,136 @@
+.mosaico-container {
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.mosaico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .status-bar {
+    display: flex;
+    gap: 1rem;
+
+    .badge {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      
+      &.online {
+        background: rgba(16, 185, 129, 0.2);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      
+      &.ai-active {
+        background: rgba(99, 102, 241, 0.2);
+        color: #818cf8;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+    }
+  }
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .video-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+
+    .camera-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .camera-status {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      &.live {
+        color: #ef4444;
+        .dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+      }
+      &.offline {
+        color: #94a3b8;
+        .dot { background: #94a3b8; }
+      }
+    }
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ai-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+
+      // Mock bounding box for demonstration
+      .box-pessoa {
+        position: absolute;
+        top: 20%;
+        left: 40%;
+        width: 15%;
+        height: 50%;
+        border: 2px solid #34d399;
+        background: rgba(52, 211, 153, 0.1);
+      }
+      .label-pessoa {
+        position: absolute;
+        top: calc(20% - 25px);
+        left: 40%;
+        background: #34d399;
+        color: #000;
+        padding: 2px 6px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+    }
+  }
+}

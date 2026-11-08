@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-app_worker_captura_video-24284bfe-04e5-4150-8182-4d5881a375d7</UserSecretsId>
+    <RootNamespace>app_worker_captura_video</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FFmpegCore" Version="5.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\app-backend-monitoracao-video\app-backend-monitoracao-video.domain\app-backend-monitoracao-video.domain.csproj" />
+    <ProjectReference Include="..\app-backend-monitoracao-video\app-backend-monitoracao-video.infrastructure\app-backend-monitoracao-video.infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\Listas de compras\Library\Core_Logs\Core_Logs.csproj" />
+  </ItemGroup>
+</Project>
